@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>門市營運後台｜柳丁生活</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .ops-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 40px 20px 80px
+        }
+
+        .ops-card {
+            background: #fff;
+            border: 1px solid var(--line, #e6e0d5);
+            border-radius: 14px;
+            padding: 28px 30px;
+            margin-bottom: 18px
+        }
+
+        .ops-head {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 6px
+        }
+
+        .ops-head h1 {
+            font-size: 20px;
+            margin: 0
+        }
+
+        .ops-tag {
+            font-size: 11.5px;
+            letter-spacing: .06em;
+            padding: 3px 9px;
+            border-radius: 999px;
+            background: #f2ede3;
+            color: var(--brand-deep, #a35a12)
+        }
+
+        .ops-sub {
+            color: #6b6459;
+            font-size: 13.5px;
+            margin: 0 0 24px
+        }
+
+        .gate label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #4d4134
+        }
+
+        .gate-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .gate input {
+            font: inherit;
+            font-size: 16px;
+            padding: 11px 14px;
+            border: 1px solid #d9d2c6;
+            border-radius: 9px;
+            width: 190px;
+            letter-spacing: .3em
+        }
+
+        .gate button {
+            font: inherit;
+            font-size: 15px;
+            padding: 11px 22px;
+            border: 0;
+            border-radius: 9px;
+            background: var(--brand-deep, #a35a12);
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600
+        }
+
+        .gate button:hover {
+            filter: brightness(.92)
+        }
+
+        .gate .err {
+            color: #b3261e;
+            font-size: 13.5px;
+            margin-top: 10px;
+            min-height: 1.2em
+        }
+
+        .mod {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 16px;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid #efeae0
+        }
+
+        .mod:last-child {
+            border-bottom: 0
+        }
+
+        .mod h3 {
+            margin: 0 0 4px;
+            font-size: 15.5px
+        }
+
+        .mod p {
+            margin: 0;
+            font-size: 13px;
+            color: #6b6459
+        }
+
+        .mod .meta {
+            font-size: 12px;
+            color: #8a8275;
+            margin-top: 5px;
+            font-variant-numeric: tabular-nums
+        }
+
+        .mod button {
+            font: inherit;
+            font-size: 14px;
+            padding: 9px 18px;
+            border-radius: 8px;
+            border: 1px solid var(--brand-deep, #a35a12);
+            background: transparent;
+            color: var(--brand-deep, #a35a12);
+            cursor: pointer;
+            white-space: nowrap;
+            min-width: 104px
+        }
+
+        .mod button:hover:not(:disabled) {
+            background: var(--brand-deep, #a35a12);
+            color: #fff
+        }
+
+        .mod button:disabled {
+            opacity: .55;
+            cursor: default
+        }
+
+        .bar {
+            height: 4px;
+            background: #efeae0;
+            border-radius: 99px;
+            overflow: hidden;
+            margin-top: 9px;
+            display: none
+        }
+
+        .bar.on {
+            display: block
+        }
+
+        .bar i {
+            display: block;
+            height: 100%;
+            width: 0;
+            background: var(--brand-deep, #a35a12);
+            transition: width .25s linear
+        }
+
+        .note {
+            background: #faf7f0;
+            border-left: 3px solid #c9a86a;
+            padding: 13px 16px;
+            border-radius: 0 8px 8px 0;
+            font-size: 13.5px;
+            color: #4d4134;
+            margin-top: 22px
+        }
+
+        .hidden {
+            display: none
+        }
+
+        .sys {
+            font-size: 12px;
+            color: #8a8275;
+            margin-top: 20px;
+            text-align: right
+        }
+    </style>
+</head>
+
+<body class="ops-body">
+    <div class="ops-wrap">
+
+        <!-- 密碼閘 -->
+        <div class="ops-card gate" id="gate">
+            <div class="ops-head">
+                <h1>門市營運後台</h1><span class="ops-tag">內部系統</span>
+            </div>
+            <p class="ops-sub">請輸入營運人員代碼。</p>
+            <div class="gate-row">
+                <input id="pw" type="password" inputmode="numeric" maxlength="8" autocomplete="off" aria-label="營運人員代碼"
+                    placeholder="････">
+                <button id="go">登入</button>
+            </div>
+            <div class="err" id="err" role="alert"></div>
+            <div class="note">
+                這是課程用的<strong>模擬後台</strong>。代碼由講師提供。
+                這裡沒有真實的顧客資料，所有內容都是為了教學而產生的。
+            </div>
+        </div>
+
+        <!-- 匯出面板 -->
+        <div id="panel" class="hidden">
+            <div class="ops-card">
+                <div class="ops-head">
+                    <h1>資料匯出</h1><span class="ops-tag">2025-01-01 ～ 2026-06-30</span>
+                </div>
+                <p class="ops-sub">選擇要匯出的系統模組。匯出格式為 CSV（UTF-8 with BOM）。</p>
+
+                <div class="mod">
+                    <div>
+                        <h3>CRM ─ 會員主檔</h3>
+                        <p>會員基本資料、加入門市、等級、行銷同意狀態</p>
+                        <div class="meta">1,200 筆　│　members.csv　│　94 KB</div>
+                        <div class="bar"><i></i></div>
+                    </div>
+                    <button data-file="members.csv">匯出</button>
+                </div>
+
+                <div class="mod">
+                    <div>
+                        <h3>POS ─ 交易主檔</h3>
+                        <p>每一筆結帳紀錄：門市、通路、金額、折扣、退貨</p>
+                        <div class="meta">8,000 筆　│　transactions.csv　│　534 KB</div>
+                        <div class="bar"><i></i></div>
+                    </div>
+                    <button data-file="transactions.csv">匯出</button>
+                </div>
+
+                <div class="mod">
+                    <div>
+                        <h3>POS ─ 交易明細</h3>
+                        <p>每筆交易的商品品項與數量</p>
+                        <div class="meta">24,786 筆　│　txn_items.csv　│　619 KB</div>
+                        <div class="bar"><i></i></div>
+                    </div>
+                    <button data-file="txn_items.csv">匯出</button>
+                </div>
+
+                <div class="mod">
+                    <div>
+                        <h3>ERP ─ 商品主檔</h3>
+                        <p>品項、品類、成本、售價、貨架區、上下架狀態</p>
+                        <div class="meta">120 筆　│　products.csv　│　11 KB</div>
+                        <div class="bar"><i></i></div>
+                    </div>
+                    <button data-file="products.csv">匯出</button>
+                </div>
+                <div class="mod">
+                    <div>
+                        <h3>atv ─ 活動紀錄</h3>
+                        <p>每月活動紀錄</p>
+                        <div class="meta">4 activity.csv　│　147 KB</div>
+                        <div class="bar"><i></i></div>
+                    </div>
+                    <button data-file="activity.csv">匯出</button>
+                </div>
+
+                <div class="note">
+                    <strong>提醒</strong>：本系統匯出的是<strong>原始資料</strong>，未經整理。
+                    欄位格式、缺漏值與重複紀錄請自行於分析端處理。
+                </div>
+
+                <p class="sys">柳丁生活 門市營運系統　v2.4.1　│　最後同步 2026-06-30 23:59</p>
+            </div>
+
+            <p style="text-align:center;font-size:13.5px">
+                <a href="../index.html">← 回到柳丁生活官網</a>
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        // ⚠️ 這是教學道具，不是門禁系統。代碼寫在前端、資料也是公開的，
+        //    目的只是讓學員體驗「從系統後台匯出資料」這件事。
+        const CODE = "nutc";
+        const gate = document.getElementById("gate");
+        const panel = document.getElementById("panel");
+        const err = document.getElementById("err");
+        const pw = document.getElementById("pw");
+
+        function unlock() {
+            if (pw.value.trim() !== CODE) {
+                err.textContent = "代碼不正確，請向講師確認。";
+                pw.value = ""; pw.focus(); return;
+            }
+            gate.classList.add("hidden");
+            panel.classList.remove("hidden");
+            try { sessionStorage.setItem("sunlit_ops", "1"); } catch (e) { }
+        }
+        document.getElementById("go").onclick = unlock;
+        pw.addEventListener("keydown", e => { if (e.key === "Enter") unlock(); });
+
+        try {
+            if (sessionStorage.getItem("sunlit_ops") === "1") {
+                gate.classList.add("hidden"); panel.classList.remove("hidden");
+            }
+        } catch (e) { }
+
+        // 匯出：跑一段假的進度，然後真的下載
+        document.querySelectorAll(".mod button").forEach(btn => {
+            btn.onclick = () => {
+                const mod = btn.closest(".mod");
+                const bar = mod.querySelector(".bar");
+                const fill = bar.querySelector("i");
+                const file = btn.dataset.file;
+                btn.disabled = true; btn.textContent = "匯出中…";
+                bar.classList.add("on"); fill.style.width = "0";
+
+                let p = 0;
+                const tick = setInterval(() => {
+                    p += 12 + Math.random() * 18;
+                    fill.style.width = Math.min(p, 100) + "%";
+                    if (p >= 100) {
+                        clearInterval(tick);
+                        const a = document.createElement("a");
+                        a.href = "../data/" + file;
+                        a.download = file;
+                        document.body.appendChild(a); a.click(); a.remove();
+                        btn.textContent = "已匯出 ✓";
+                        setTimeout(() => {
+                            btn.disabled = false; btn.textContent = "重新匯出";
+                            bar.classList.remove("on");
+                        }, 1800);
+                    }
+                }, 180);
+            };
+        });
+    </script>
+</body>
+
+</html>
