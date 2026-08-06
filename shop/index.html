@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>線上選品｜柳丁生活</title>
+    <meta name="description" content="柳丁生活課程體驗版線上選品，瀏覽 36 件日常選品。">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">跳到主要內容</a>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand-mark" href="../index.html" aria-label="回到柳丁生活首頁">
+                <span class="sun-dot" aria-hidden="true"></span>
+                <span class="brand-word">柳丁生活<small>Sunlit Living</small></span>
+            </a>
+            <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="main-nav">選單</button>
+            <nav class="site-nav" data-nav id="main-nav" aria-label="主要導覽">
+                <a href="../about.html">我們是誰</a>
+                <a href="../collections.html">逛逛選品</a>
+                <a href="../stores.html">門市</a>
+                <a href="../contact.html">聯絡我們</a>
+                <a class="nav-buy" href="index.html" aria-current="page">線上選品</a>
+                <a class="nav-ops" href="../admin/index.html" title="門市營運後台">後台</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="shop-hero">
+            <div class="container shop-hero-inner">
+                <p class="eyebrow">SUNLIT ONLINE SHOWROOM</p>
+                <h1>把柳丁的選品，慢慢逛一遍</h1>
+                <p class="shop-lede">這是柳丁生活的課程體驗版線上商店。先用自己的步調瀏覽 36 件精選日常用品，再回到商品故事，感受一家真的存在於雲嘉南的選物店。</p>
+                <a class="button button-quiet shop-home-link" href="../index.html">回到柳丁生活官網 ↗</a>
+            </div>
+        </section>
+
+        <section class="section section-tight">
+            <div class="container">
+                <div class="notice shop-notice">
+                    <strong>課程體驗版</strong>　這裡提供瀏覽、搜尋與商品故事，不提供購物車、付款或真實訂單。
+                </div>
+
+                <div class="shop-tools" aria-label="商品篩選工具">
+                    <div class="shop-search-field">
+                        <label for="shop-search">搜尋商品</label>
+                        <input id="shop-search" type="search" placeholder="例如：茶、保健、清潔" autocomplete="off">
+                    </div>
+                    <div class="shop-category-field">
+                        <label for="shop-category">依品類瀏覽</label>
+                        <select id="shop-category">
+                            <option value="">全部品類</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="shop-result-bar">
+                    <p id="shop-status" class="shop-status" aria-live="polite"></p>
+                    <a class="shop-back-link" href="../collections.html">回到選品總覽 ↗</a>
+                </div>
+                <div id="shop-grid" class="shop-grid" aria-live="polite"></div>
+                <p id="shop-empty" class="shop-empty" hidden>目前沒有符合條件的選品，換個關鍵字或品類看看。</p>
+                <noscript>
+                    <p class="notice">這個體驗頁需要開啟 JavaScript，才能使用搜尋與品類篩選。</p>
+                </noscript>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <a class="brand-mark" href="../index.html">
+                    <span class="sun-dot" aria-hidden="true"></span>
+                    <span class="brand-word">柳丁生活<small>Sunlit Living</small></span>
+                </a>
+                <p>在雲嘉南，把日子過得舒服一點的選物店。</p>
+                <p class="group-mark">藍鴨集團 旗下品牌</p>
+            </div>
+            <div class="footer-nav">
+                <strong>逛逛</strong>
+                <a href="../about.html">我們是誰</a>
+                <a href="../collections.html">逛逛選品</a>
+                <a href="../stores.html">門市</a>
+            </div>
+            <div class="footer-nav">
+                <strong>課程體驗</strong>
+                <a href="index.html">線上選品</a>
+                <a href="../contact.html">聯絡我們</a>
+            </div>
+        </div>
+        <div class="container fine-print">本站為教學模擬情境，所有門市、商品與評論均為虛構。僅供課堂實作使用。</div>
+    </footer>
+
+    <script src="../assets/js/site.js"></script>
+    <script src="catalog.js"></script>
+    <script src="shop.js"></script>
+</body>
+
+</html>
